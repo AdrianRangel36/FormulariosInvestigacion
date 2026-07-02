@@ -1,0 +1,21 @@
+Guía de Entrevista Semiestructurada (Fase de Diagnóstico Pre-Implementación)
+Sección 1: Exploración de Técnicas de Enseñanza Actuales
+El propósito de esta sección es mapear cómo los docentes del programa USAER 45J integran actualmente las distintas metodologías en las áreas de lectura y matemáticas. 
+•	Pregunta 1: Dentro de su planeación habitual para las áreas de lectura y matemáticas, ¿qué técnicas específicas basadas en el aprendizaje visual o lúdico suele utilizar con los alumnos que presentan barreras para el aprendizaje? 
+o	Objetivo: Identificar el catálogo real de dinámicas lúdicas y visuales que ya dominan los maestros antes de parametrizarlas en el sistema.
+•	Pregunta 2: ¿En qué situaciones o bajo qué circunstancias pedagógicas decide recurrir a las técnicas de repetición tradicional en lugar de dinámicas lúdicas? 
+o	Objetivo: Comprender el valor y el espacio que aún tiene la técnica tradicional para no sesgar el diseño del software y registrarla adecuadamente.
+•	Pregunta 3: ¿Cómo adapta estas técnicas de enseñanza dependiendo del tipo de necesidad educativa especial (por ejemplo, déficit de atención vs. dificultades de aprendizaje) que presenta el alumno? 
+o	Objetivo: Conocer las variables de control que los docentes ya aplican intuitivamente en el aula. 
+Sección 2: Percepción del Impacto Académico y Conductual
+Busca documentar empíricamente la hipótesis del proyecto desde la experiencia previa de los docentes, antes de tener datos estadísticos automatizados. 
+•	Pregunta 4: Basado en su experiencia, ¿qué diferencias inmediatas observa en la retención de conocimientos (lectura y matemáticas) cuando utiliza un enfoque visual o lúdico frente a uno basado en la repetición? 
+o	Objetivo: Recopilar la justificación cualitativa de por qué unas técnicas optimizan mejor el aprendizaje. 
+•	Pregunta 5: En cuanto a la conducta en el aula, ¿cómo varía el nivel de atención o la presencia de conductas disruptivas dependiendo de la técnica de enseñanza que aplique en la sesión? 
+o	Objetivo: Establecer la base cualitativa del comportamiento que posteriormente se medirá con las rúbricas estandarizadas en la plataforma. 
+Sección 3: Diagnóstico de las Necesidades de Seguimiento y Análisis
+Esta sección justifica la viabilidad práctica y técnica del proyecto integrador, evidenciando el problema que el software va a resolver. 
+•	Pregunta 6: Actualmente, ¿qué instrumentos manuales o procesos utiliza para registrar si una técnica de enseñanza específica funcionó para mejorar la calificación o el comportamiento de un alumno? 
+o	Objetivo: Evidenciar la falta de herramientas tecnológicas sistematizadas y la carga administrativa actual. 
+•	Pregunta 7: Al momento de evaluar qué metodologías son más inclusivas o efectivas, ¿qué dificultades encuentra para cruzar o comparar los datos de calificaciones con los reportes de comportamiento de forma manual? 
+o	Objetivo: Validar la necesidad de la segmentación de datos y la analítica mixta que su sistema informático va a proporcionar a la primaria "Niños Héroes". 

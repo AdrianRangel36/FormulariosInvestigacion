@@ -1,0 +1,83 @@
+{
+  "id": "entrevista_cualitativa",
+  "title": "Guía de Entrevista Semiestructurada (Fase de Diagnóstico Pre-Implementación)",
+  "sections": [
+    {
+      "id": "seccion_1",
+      "title": "Sección 1: Exploración de Técnicas de Enseñanza Actuales",
+      "description": "El propósito de esta sección es mapear cómo los docentes del programa USAER 45J integran actualmente las distintas metodologías en las áreas de lectura y matemáticas.",
+      "questions": [
+        {
+          "id": "p1",
+          "type": "text",
+          "prompt": "Dentro de su planeación habitual para las áreas de lectura y matemáticas, ¿qué técnicas específicas basadas en el aprendizaje visual o lúdico suele utilizar con los alumnos que presentan barreras para el aprendizaje?",
+          "helperText": "Objetivo: Identificar el catálogo real de dinámicas lúdicas y visuales que ya dominan los maestros antes de parametrizarlas en el sistema.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        },
+        {
+          "id": "p2",
+          "type": "text",
+          "prompt": "¿En qué situaciones o bajo qué circunstancias pedagógicas decide recurrir a las técnicas de repetición tradicional en lugar de dinámicas lúdicas?",
+          "helperText": "Objetivo: Comprender el valor y el espacio que aún tiene la técnica tradicional para no sesgar el diseño del software y registrarla adecuadamente.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        },
+        {
+          "id": "p3",
+          "type": "text",
+          "prompt": "¿Cómo adapta estas técnicas de enseñanza dependiendo del tipo de necesidad educativa especial (por ejemplo, déficit de atención vs. dificultades de aprendizaje) que presenta el alumno?",
+          "helperText": "Objetivo: Conocer las variables de control que los docentes ya aplican intuitivamente en el aula.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        }
+      ]
+    },
+    {
+      "id": "seccion_2",
+      "title": "Sección 2: Percepción del Impacto Académico y Conductual",
+      "description": "Busca documentar empíricamente la hipótesis del proyecto desde la experiencia previa de los docentes, antes de tener datos estadísticos automatizados.",
+      "questions": [
+        {
+          "id": "p4",
+          "type": "text",
+          "prompt": "Basado en su experiencia, ¿qué diferencias inmediatas observa en la retención de conocimientos (lectura y matemáticas) cuando utiliza un enfoque visual o lúdico frente a uno basado en la repetición?",
+          "helperText": "Objetivo: Recopilar la justificación cualitativa de por qué unas técnicas optimizan mejor el aprendizaje.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        },
+        {
+          "id": "p5",
+          "type": "text",
+          "prompt": "En cuanto a la conducta en el aula, ¿cómo varía el nivel de atención o la presencia de conductas disruptivas dependiendo de la técnica de enseñanza que aplique en la sesión?",
+          "helperText": "Objetivo: Establecer la base cualitativa del comportamiento que posteriormente se medirá con las rúbricas estandarizadas en la plataforma.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        }
+      ]
+    },
+    {
+      "id": "seccion_3",
+      "title": "Sección 3: Diagnóstico de las Necesidades de Seguimiento y Análisis",
+      "description": "Esta sección justifica la viabilidad práctica y técnica del proyecto integrador, evidenciando el problema que el software va a resolver.",
+      "questions": [
+        {
+          "id": "p6",
+          "type": "text",
+          "prompt": "Actualmente, ¿qué instrumentos manuales o procesos utiliza para registrar si una técnica de enseñanza específica funcionó para mejorar la calificación o el comportamiento de un alumno?",
+          "helperText": "Objetivo: Evidenciar la falta de herramientas tecnológicas sistematizadas y la carga administrativa actual.",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        },
+        {
+          "id": "p7",
+          "type": "text",
+          "prompt": "Al momento de evaluar qué metodologías son más inclusivas o efectivas, ¿qué dificultades encuentra para cruzar o comparar los datos de calificaciones con los reportes de comportamiento de forma manual?",
+          "helperText": "Objetivo: Validar la necesidad de la segmentación de datos y la analítica mixta que su sistema informático va a proporcionar a la primaria \"Niños Héroes\".",
+          "required": true,
+          "placeholder": "Escriba su respuesta..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+import { Link } from 'react-router-dom'
+import { forms } from '../data/forms'
+
+export function HomePage() {
+  return (
+    <div className="min-h-svh bg-(--bg) px-4 py-10">
+      <div className="mx-auto flex max-w-3xl flex-col gap-6 text-left">
+        <div className="overflow-hidden rounded-2xl border border-(--border) bg-(--surface) p-6 shadow-(--shadow)">
+          <h1 className="text-2xl font-semibold text-(--text-h)">
+            Formularios de Investigación
+          </h1>
+          <p className="mt-2 text-(--text)">
+            Selecciona un formulario para comenzar a capturar respuestas.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4 hover:bg-green-400 rounded-2xl p-1">
+          {forms.map((entry) => (
+            <Link
+              key={entry.path}
+              to={entry.path}
+              className="rounded-2xl border border-(--border) bg-(--surface) p-6 shadow-(--shadow) transition-colors "
+            >
+              <h2 className="text-xl font-semibold text-(--text-h)">{entry.menuTitle}</h2>
+              {entry.menuDescription && (
+                <p className="mt-1 text-sm text-(--text)">{entry.menuDescription}</p>
+              )}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
