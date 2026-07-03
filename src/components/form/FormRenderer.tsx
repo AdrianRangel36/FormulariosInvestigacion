@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import type { AnswersState, FormDefinition } from '../../types/form'
 import { Section } from './Section'
@@ -25,6 +25,10 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
   const [answers, setAnswers] = useState<AnswersState>({})
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<SubmitStatus>({ kind: 'idle' })
+  // Synchronous guard against rapid double/triple clicks: a ref updates
+  // immediately, unlike state which only reflects after a re-render, so
+  // clicks fired before React re-renders still see the in-flight flag.
+  const submittingRef = useRef(false)
 
   function handleAnswerChange(questionId: string, value: AnswersState[string]) {
     setAnswers((prev) => ({ ...prev, [questionId]: value }))
@@ -40,7 +44,8 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
 
-    if (status.kind === 'submitting') return
+    // Bail if a submit is already in flight (guards against rapid re-clicks).
+    if (submittingRef.current) return
 
     const nextErrors: Record<string, string> = {}
     for (const section of form.sections) {
@@ -58,6 +63,7 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
       return
     }
 
+    submittingRef.current = true
     setStatus({ kind: 'submitting' })
     try {
       await onSubmit?.(answers)
@@ -70,6 +76,8 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
             ? err.message
             : 'No se pudo enviar el formulario. Intente de nuevo.',
       })
+    } finally {
+      submittingRef.current = false
     }
   }
 
@@ -97,10 +105,14 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
       <div className="flex items-center justify-between gap-4 rounded-2xl border border-(--border) bg-(--surface) p-4 shadow-(--shadow)">
         <button
           type="submit"
-          disabled={status.kind === 'submitting'}
+          disabled={status.kind === 'submitting' || status.kind === 'success'}
           className="rounded-lg bg-(--accent) px-7 py-2.5 font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none"
         >
-          {status.kind === 'submitting' ? 'Enviando...' : 'Enviar'}
+          {status.kind === 'submitting'
+            ? 'Enviando...'
+            : status.kind === 'success'
+              ? 'Enviado'
+              : 'Enviar'}
         </button>
 
         {status.kind === 'success' && (
