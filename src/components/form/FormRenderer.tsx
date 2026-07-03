@@ -5,8 +5,14 @@ import { Section } from './Section'
 
 interface FormRendererProps {
   form: FormDefinition
-  onSubmit?: (answers: AnswersState) => void
+  onSubmit?: (answers: AnswersState) => void | Promise<void>
 }
+
+type SubmitStatus =
+  | { kind: 'idle' }
+  | { kind: 'submitting' }
+  | { kind: 'success' }
+  | { kind: 'error'; message: string }
 
 function isAnswerMissing(value: AnswersState[string]) {
   if (value === undefined) return true
@@ -18,7 +24,7 @@ function isAnswerMissing(value: AnswersState[string]) {
 export function FormRenderer({ form, onSubmit }: FormRendererProps) {
   const [answers, setAnswers] = useState<AnswersState>({})
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<SubmitStatus>({ kind: 'idle' })
 
   function handleAnswerChange(questionId: string, value: AnswersState[string]) {
     setAnswers((prev) => ({ ...prev, [questionId]: value }))
@@ -28,11 +34,13 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
       delete next[questionId]
       return next
     })
-    setSubmitted(false)
+    setStatus({ kind: 'idle' })
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+
+    if (status.kind === 'submitting') return
 
     const nextErrors: Record<string, string> = {}
     for (const section of form.sections) {
@@ -45,12 +53,23 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
 
     setErrors(nextErrors)
 
-    if (Object.keys(nextErrors).length === 0) {
-      console.log('Respuestas:', answers)
-      onSubmit?.(answers)
-      setSubmitted(true)
-    } else {
-      setSubmitted(false)
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus({ kind: 'idle' })
+      return
+    }
+
+    setStatus({ kind: 'submitting' })
+    try {
+      await onSubmit?.(answers)
+      setStatus({ kind: 'success' })
+    } catch (err) {
+      setStatus({
+        kind: 'error',
+        message:
+          err instanceof Error
+            ? err.message
+            : 'No se pudo enviar el formulario. Intente de nuevo.',
+      })
     }
   }
 
@@ -75,16 +94,23 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
         />
       ))}
 
-      <div className="flex items-center justify-between rounded-2xl border border-(--border) bg-(--surface) p-4 shadow-(--shadow)">
+      <div className="flex items-center justify-between gap-4 rounded-2xl border border-(--border) bg-(--surface) p-4 shadow-(--shadow)">
         <button
           type="submit"
-          className="rounded-md bg-(--accent) px-6 py-2 font-medium text-white"
+          disabled={status.kind === 'submitting'}
+          className="rounded-md bg-(--accent) px-6 py-2 font-medium text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Enviar
+          {status.kind === 'submitting' ? 'Enviando...' : 'Enviar'}
         </button>
-        {submitted && (
+
+        {status.kind === 'success' && (
           <p className="rounded-md border border-(--accent-border) bg-(--accent-bg) px-4 py-2 text-(--text-h)">
             Respuestas enviadas correctamente.
+          </p>
+        )}
+        {status.kind === 'error' && (
+          <p className="rounded-md border border-red-300 bg-red-50 px-4 py-2 text-red-700">
+            {status.message}
           </p>
         )}
       </div>

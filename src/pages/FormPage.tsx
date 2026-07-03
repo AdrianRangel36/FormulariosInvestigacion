@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom'
 import type { AnswersState, FormDefinition } from '../types/form'
 import { FormRenderer } from '../components/form/FormRenderer'
+import { submitFormResponse } from '../lib/submissions'
 
 interface FormPageProps {
   form: FormDefinition
 }
 
 export function FormPage({ form }: FormPageProps) {
-  function handleSubmit(answers: AnswersState) {
-    console.log('Formulario enviado:', form.id, answers)
+  async function handleSubmit(answers: AnswersState) {
+    const result = await submitFormResponse(form.id, answers)
+    if (!result.ok) {
+      throw new Error(result.error)
+    }
   }
 
   return (
