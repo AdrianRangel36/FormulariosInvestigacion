@@ -1,5 +1,6 @@
 import type { FormDefinition } from '../types/form'
 import entrevistaCualitativa from './entrevistaCualitativa.json'
+import moduloCapturaCuantitativa from './moduloCapturaCuantitativa.json'
 
 export interface FormRouteEntry {
   path: string
@@ -16,5 +17,11 @@ export const forms: FormRouteEntry[] = [
       'Entrevista semiestructurada para docentes del programa USAER 45J (fase de diagnóstico pre-implementación).',
     form: entrevistaCualitativa as FormDefinition,
   },
-  
+  {
+    path: '/CapturaCuantitativa',
+    menuTitle: 'Módulo de Captura Cuantitativa',
+    menuDescription:
+      'Registro por alumno/sesión: técnica aplicada, calificaciones de lectura y matemáticas, y conducta.',
+    form: moduloCapturaCuantitativa as FormDefinition,
+  },
 ]

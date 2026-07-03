@@ -1,0 +1,88 @@
+{
+  "id": "captura_cuantitativa",
+  "title": "Módulo de Captura Cuantitativa (Formulario por Alumno/Sesión)",
+  "description": "Seleccione o ingrese el valor numérico correspondiente al desempeño y comportamiento observado en el alumno durante la sesión evaluada.",
+  "sections": [
+    {
+      "id": "seccion_1",
+      "title": "Sección 1: Contextualización de la Sesión (Variable Independiente)",
+      "questions": [
+        {
+          "id": "tecnica_ensenanza",
+          "type": "singleChoice",
+          "prompt": "¿Qué tipo de técnica de enseñanza principal se aplicó en esta sesión?",
+          "required": true,
+          "options": [
+            { "value": "ludico", "label": "Aprendizaje Lúdico" },
+            { "value": "visual", "label": "Aprendizaje Visual" },
+            { "value": "repeticion", "label": "Repetición Tradicional" }
+          ]
+        },
+        {
+          "id": "duracion_minutos",
+          "type": "numeric",
+          "prompt": "¿Cuál fue la duración exacta (en minutos) de la aplicación de la técnica?",
+          "helperText": "Ingrese la duración en minutos.",
+          "required": true,
+          "min": 0,
+          "step": 1
+        }
+      ]
+    },
+    {
+      "id": "seccion_2",
+      "title": "Sección 2: Rendimiento Académico (Variables Dependientes Cuantitativas)",
+      "questions": [
+        {
+          "id": "calificacion_lectura",
+          "type": "numeric",
+          "prompt": "En una escala del 0 al 10, ¿cuál fue la calificación obtenida por el alumno en la evaluación de LECTURA de este periodo?",
+          "helperText": "Escala de 0 a 10 (se permiten decimales).",
+          "required": true,
+          "min": 0,
+          "max": 10,
+          "step": 0.1
+        },
+        {
+          "id": "calificacion_matematicas",
+          "type": "numeric",
+          "prompt": "En una escala del 0 al 10, ¿cuál fue la calificación obtenida por el alumno en la evaluación de MATEMÁTICAS de este periodo?",
+          "helperText": "Escala de 0 a 10 (se permiten decimales).",
+          "required": true,
+          "min": 0,
+          "max": 10,
+          "step": 0.1
+        }
+      ]
+    },
+    {
+      "id": "seccion_3",
+      "title": "Sección 3: Evaluación de Conducta y Atención (Variables Cualitativas Cuantificadas)",
+      "questions": [
+        {
+          "id": "incidencias_disruptivas",
+          "type": "singleChoice",
+          "prompt": "¿Cuántas incidencias de conductas disruptivas (indisciplina, distracciones fuertes, interrupciones) registró el alumno durante la sesión?",
+          "required": true,
+          "options": [
+            { "value": "0", "label": "0 incidencias" },
+            { "value": "1-2", "label": "1 a 2 incidencias" },
+            { "value": "3-4", "label": "3 a 4 incidencias" },
+            { "value": "5+", "label": "5 o más incidencias" }
+          ]
+        },
+        {
+          "id": "nivel_atencion",
+          "type": "likert",
+          "prompt": "¿Cómo evalúa el nivel de atención y enfoque del alumno frente a las actividades explicadas?",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "minLabel": "Muy Bajo",
+          "maxLabel": "Muy Alto",
+          "labels": ["Muy Bajo", "Bajo", "Regular", "Alto", "Muy Alto"]
+        }
+      ]
+    }
+  ]
+}

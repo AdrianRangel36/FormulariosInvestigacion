@@ -25,7 +25,7 @@ create policy "Public can submit form responses"
   with check (
     -- Mantener esta lista sincronizada con los form.id de src/data/forms.ts
     -- cada vez que se agregue un formulario nuevo.
-    form_id in ('entrevista_cualitativa')
+    form_id in ('entrevista_cualitativa', 'captura_cuantitativa')
   );
 
 -- Deliberadamente no hay política de SELECT: con RLS activo y sin política

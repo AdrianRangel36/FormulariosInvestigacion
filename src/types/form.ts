@@ -24,6 +24,8 @@ export interface LikertQuestion extends BaseQuestion {
   max?: number
   minLabel?: string
   maxLabel?: string
+  // Optional per-point labels (e.g. ["Muy Bajo", ..., "Muy Alto"]); index 0 = min.
+  labels?: string[]
 }
 
 export interface NumericQuestion extends BaseQuestion {

@@ -75,11 +75,11 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left">
-      <div className="overflow-hidden rounded-2xl border border-(--border) bg-(--surface) shadow-(--shadow)">
-        <div className="p-6">
-          <h1 className="text-2xl font-semibold text-(--text-h)">{form.title}</h1>
+      <div className="overflow-hidden rounded-2xl border border-(--border) border-l-4 border-l-(--accent) bg-(--surface) shadow-(--shadow)">
+        <div className="p-8">
+          <h1 className="text-3xl font-semibold tracking-tight text-(--text-h)">{form.title}</h1>
           {form.description && (
-            <p className="mt-2 text-(--text)">{form.description}</p>
+            <p className="mt-3 text-(--text)">{form.description}</p>
           )}
         </div>
       </div>
@@ -98,7 +98,7 @@ export function FormRenderer({ form, onSubmit }: FormRendererProps) {
         <button
           type="submit"
           disabled={status.kind === 'submitting'}
-          className="rounded-md bg-(--accent) px-6 py-2 font-medium text-white disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-lg bg-(--accent) px-7 py-2.5 font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none"
         >
           {status.kind === 'submitting' ? 'Enviando...' : 'Enviar'}
         </button>
