@@ -14,7 +14,7 @@ export const forms: FormRouteEntry[] = [
     path: '/DiagnosticoTecnicas',
     menuTitle: 'Diagnóstico de Técnicas de Enseñanza',
     menuDescription:
-      'Entrevista semiestructurada para docentes del programa USAER 45J (fase de diagnóstico pre-implementación).',
+      'Entrevista semiestructurada para los docentes de la unidad de servicio y apoyo a la educación regular (USAER) (fase de diagnóstico pre-implementación).',
     form: entrevistaCualitativa as FormDefinition,
   },
   {
